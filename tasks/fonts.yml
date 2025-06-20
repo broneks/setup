@@ -1,0 +1,17 @@
+- name: tap fonts
+  homebrew_tap:
+    name: homebrew/cask-fonts
+  tags:
+    - brew-i
+    - fonts
+    - dotfiles
+    - terminal
+
+- name: fira code font
+  homebrew_cask:
+    name: font-fira-code
+  tags:
+    - brew-i
+    - fonts
+    - dotfiles
+    - terminal

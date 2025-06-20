@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Mac Command Line Tools
+xcode-select -p &> /dev/null
+if [ $? != 0 ]; then
+  xcode-select --install
+fi
+
+# Homebrew
+which brew 1>&/dev/null
+if [[ $? != 0 ]] ; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo 'PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  brew update --quiet
+fi
+
+# Ansible
+brew install ansible --quiet

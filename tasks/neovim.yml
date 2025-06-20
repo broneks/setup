@@ -1,0 +1,93 @@
+- name: neovim
+  homebrew:
+    name: neovim
+  tags:
+    - brew-i
+    - neovim
+
+- name: neovim tools
+  homebrew:
+    name:
+      - fd
+      - ripgrep
+  tags:
+    - brew-i
+    - neovim
+
+- name: debugger javascript exists?
+  stat:
+    path: "{{ home }}/debugger/microsoft/vscode-node-debug2"
+  register: node_debugger
+  tags:
+    - brew-i
+    - neovim
+
+- name: debugger - javascript
+  ansible.builtin.git:
+    repo: 'git@github.com:microsoft/vscode-node-debug2.git'
+    dest: "{{ home }}/debugger/microsoft/vscode-node-debug2"
+  when: node_debugger.stat.exists == False
+  tags:
+    - brew-i
+    - neovim
+
+- name: debugger npm i and build javascript
+  shell: cd {{ home }}/debugger/microsoft/vscode-node-debug2 && npm i && npm run build
+  tags:
+    - brew-i
+    - neovim
+
+- name: LSP - html/css/json/eslint
+  npm:
+    name: vscode-langservers-extracted
+    global: true
+  tags:
+    - npm
+    - neovim
+
+- name: LSP - css modules
+  npm:
+    name: cssmodules-language-server
+    global: true
+  tags:
+    - npm
+    - neovim
+
+- name: LSP - sql
+  npm:
+    name: sql-language-server
+    global: true
+  tags:
+    - npm
+    - neovim
+
+- name: LSP - typescript/javascript
+  npm:
+    name: typescript-language-server
+    global: true
+  tags:
+    - npm
+    - neovim
+
+- name: LSP - yaml
+  npm:
+    name: yaml-language-server
+    global: true
+  tags:
+    - npm
+    - neovim
+
+- name: LSP - python
+  shell: pip3 install python-lsp-server
+  tags:
+    - brew-i
+    - neovim
+
+- name: LSP - ruby
+  gem:
+    name:
+      - ruby-lsp
+      - solargraph
+  tags:
+    - brew-i
+    - neovim

@@ -1,0 +1,21 @@
+- name: GNU stow
+  homebrew:
+    name: stow
+  tags:
+    - brew-i
+    - dotfiles
+
+- name: cloning .dotfiles
+  ansible.builtin.git:
+    repo: 'git@github.com:broneks/dotfiles.git'
+    dest: '{{ home }}/.dotfiles'
+    update: true
+    accept_hostkey: true
+    version: main
+  tags:
+    - dotfiles
+
+- name: stow dotfiles
+  shell: cd {{ home }}/.dotfiles && sh ./install
+  tags:
+    - dotfiles

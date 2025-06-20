@@ -1,0 +1,19 @@
+- name: developer tools
+  homebrew:
+    name:
+      - coreutils
+      - jq
+      - bat
+      - trash
+      - gnu-sed
+      - insect
+  tags:
+    - brew-i
+    - terminal
+
+- name: alacritty
+  homebrew_cask:
+    name: alacritty
+  tags:
+    - brew-i
+    - terminal

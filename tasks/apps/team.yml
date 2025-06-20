@@ -1,0 +1,15 @@
+- name: slack
+  homebrew_cask:
+    name: slack
+  tags:
+    - brew-i
+    - apps
+    - apps-team
+
+- name: zoom
+  homebrew_cask:
+    name: zoom
+  tags:
+    - brew-i
+    - apps
+    - apps-team

@@ -1,0 +1,24 @@
+- name: tmux
+  homebrew:
+    name: tmux
+  tags:
+    - brew-i
+    - tmux
+    - terminal
+
+- name: oh-my-tmux
+  ansible.builtin.git:
+    repo: 'https://github.com/gpakosz/.tmux.git'
+    dest: '{{ home }}/.oh-my-tmux'
+    update: true
+    accept_hostkey: true
+    version: master
+  tags:
+    - tmux
+    - terminal
+
+- name: symlink tmux.conf
+  shell: ln -s -f {{ home }}/.oh-my-tmux/.tmux.conf {{ home }}/.tmux.conf
+  tags:
+    - tmux
+    - terminal

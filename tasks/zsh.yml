@@ -1,0 +1,40 @@
+- name: zsh
+  homebrew:
+    name: zsh
+  tags:
+    - brew-i
+    - zsh
+    - terminal
+
+- name: change shell to zsh
+  become: true
+  user:
+    name: '{{ user }}'
+    shell: /bin/zsh
+  tags:
+    - zsh
+    - terminal
+
+- name: oh-my-zsh exists?
+  stat:
+    path: '{{ home }}/.oh-my-zsh'
+  register: ohmyzsh
+  tags:
+    - zsh
+    - terminal
+
+- name: oh-my-zsh
+  become: true
+  shell: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+  when: ohmyzsh.stat.exists == False
+  tags:
+    - zsh
+    - terminal
+
+- name: plugin zsh-autosuggestions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: '~/.oh-my-zsh/plugins/zsh-autosuggestions'
+  tags:
+    - zsh
+    - terminal

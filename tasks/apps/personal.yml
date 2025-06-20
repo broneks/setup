@@ -1,0 +1,31 @@
+- name: spotify
+  homebrew_cask:
+    name: spotify
+  tags:
+    - brew-i
+    - apps
+    - apps-personal
+
+- name: discord
+  homebrew_cask:
+    name: discord
+  tags:
+    - brew-i
+    - apps
+    - apps-personal
+
+- name: notion
+  homebrew_cask:
+    name: notion
+  tags:
+    - brew-i
+    - apps
+    - apps-personal
+
+- name: vlc
+  homebrew_cask:
+    name: vlc
+  tags:
+    - brew-i
+    - apps
+    - apps-personal

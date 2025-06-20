@@ -1,0 +1,16 @@
+- name: node manager
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+  args:
+    creates: "{{ home }}/.nvm/nvm.sh"
+  tags:
+    - node
+
+- name: node version
+  become: true
+  vars:
+    version: 20.9.0
+  shell: source {{ home }}/.zshrc && nvm install {{ version }} && nvm use {{ version }}
+  args:
+    executable: /bin/zsh
+  tags:
+    - node
