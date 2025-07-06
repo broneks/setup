@@ -1,6 +1,6 @@
-- name: amethyst
+- name: aerospace
   homebrew_cask:
-    name: amethyst
+    name: nikitabobko/tap/aerospace
   tags:
     - brew-i
     - apps
@@ -9,22 +9,6 @@
 - name: chrome
   homebrew_cask:
     name: google-chrome
-  tags:
-    - brew-i
-    - apps
-    - apps-core
-
-- name: insomnia
-  homebrew_cask:
-    name: insomnia
-  tags:
-    - brew-i
-    - apps
-    - apps-core
-
-- name: keepassxc
-  homebrew_cask:
-    name: keepassxc
   tags:
     - brew-i
     - apps

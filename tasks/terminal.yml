@@ -11,9 +11,9 @@
     - brew-i
     - terminal
 
-- name: alacritty
+- name: ghostty
   homebrew_cask:
-    name: alacritty
+    name: ghostty
   tags:
     - brew-i
     - terminal
